@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://js.paystack.co/v1/inline.js"></script>
+	<title>Payment Form - Donate with Card | FOFBC</title>
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		body{
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+			color: #333;
+			text-align: center;
+			padding: 20px;
+		}
+
+		h2{
+			color: red;
+			margin-bottom: 20px;
+		}
+
+		form{
+			/*background: linear-gradient(135deg, #ff0000, #ffffff, #0000ff);*/
+			/*background: linear-gradient(135deg, grey, lightgrey, white);*/
+			background-color: rgba(255, 255, 255, 0.3);
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			max-width: 400px;
+			margin: auto;
+			border: 1px solid #ddd;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			color: #000;
+			opacity: 0;
+			transform: translateX(-10%);
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+			animation: slideIn 1s ease-out forwards;
+		}
+
+		@keyframes slideIn{
+			from{
+				opacity: 0;
+				transform: translateX(-10%);
+			}
+			to{
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		input[type="email"], input[type="number"]{
+			width: calc(100% - 20px);
+			padding: 10px;
+			margin: 10px 0;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			box-sizing: border-box;
+		}
+
+		input[type="email"]:focus, input[type="number"]:focus{
+			border-color: #0000ff;
+			outline: none;
+		}
+
+		label{
+			font-size: 14px;
+			text-align: left;
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		button{
+			width: 100%;
+			padding: 12px;
+			margin-top: 15px;
+			border: none;
+			border-radius: 5px;
+			background-color: #0000ff;
+			color: #fff;
+			font-size: 16px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		button:hover{
+			background-color: #ff0000;
+			transform: scale(1.05);
+		}
+	</style>
+</head>
+<body>
+
+	<div id="background"></div>
+
+	<h2>Donate with Card</h2>
+	<form id="payment-form">
+		<label for="email">Email:</label>
+		<br>
+		<input type="email" id="email" placeholder="Enter your email" required>
+		<br>
+		<br>
+		<label for="amount">Amount(GHc):</label>
+		<br>
+		<input type="number" id="amount" placeholder="Enter amount" required>
+		<br>
+		<br>
+		<button type="button" id="pay-now">Donate</button>
+	</form>
+
+	<script>
+		document.getElementById('pay-now').addEventListener('click', function() {
+			console.log('Donate button has been tapped');
+
+			const email = document.getElementById('email').value;
+			const amount = document.getElementById('amount').value;
+
+			if(!email || !amount || amount <= 0){
+				alert('Please enter a valid email and amount.');
+				console.log('Invalid input');
+				return;
+			}
+
+			const amountInKobo = amount * 100;
+
+			var handler = PaystackPop.setup({
+				key: 'pk_live_66993506e9a1dd49fe2956bde4d9bd1cf75e1a82',
+				email: email,
+				amount: amountInKobo,
+				currency: 'GHS',
+				channels: ['card'],
+				callback: function(response){
+					alert('Payment successful! God richly bless you. Transaction reference: ' + response.reference);
+				},
+				onClose: function(){
+					alert('Transaction was cancelled.');
+				}
+			});
+
+			handler.openIframe();
+		});
+	</script>
+	<script src="script.js"></script>
+	<script src="analytics.js"></script>
+</body>
+</html>
