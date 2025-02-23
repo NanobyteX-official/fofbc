@@ -87,12 +87,27 @@ const bibleStudies = [
 	memoryVerse: "Psalm 24:8 'Who is the King of glory? The LORD strong and mighty, the LORD mighty in battle.'",
 	scripture: "Isaiah 11:2",
 	lessons: [
-		"THe Spirit of might works on the inner man. Ephesians 3:16",
+		"The Spirit of might works on the inner man. Ephesians 3:16",
 		"The Spiritof might to do more than the ordinary. Judges 14:6",
 		"Might to defeat the enemy. Judges 15:14",
 		"Mighty against sin. Micah 3:8",
 		"Might to do the work of God. Zechariah 4:6",
 		"Might to preach the gospel. Romans 15:19"
+		],
+	motto:"One Family, One Faith."
+},
+
+{
+	title: "Lesson 8 | The Spirit of Knowledge",
+	memoryVerse: "Proverbs 13:16 'Every prudent man dealeth with knowledge: but a fool layeth open his folly'",
+	scripture: "Isaiah 11:2",
+	lessons: [
+		"Knowledge is of God. Proverbs 1:7, Job 36:4, 1 Samuel 2:3, Numbers 24:16",
+		"Knowledge is related to particular work. 1 Kings 9:27, Exodus 31:3",
+		"Knowledge must be searched for like it is not near. Job 36:3",
+		"Knowledge is shown or revealed. Psalm 19:2",
+		"Knowledge is better than riches. Proverbs 8:10",
+		"You cannot get knowledge if you don't like instruction. Proverbs 12:1"
 		],
 	motto:"One Family, One Faith."
 }
